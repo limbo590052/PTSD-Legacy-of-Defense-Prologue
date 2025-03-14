@@ -1,0 +1,9 @@
+{
+  "this_fileName":"background_paths.json",
+  "backgrounds": {
+    "FRONT_PAGE": "../Resources/Background/FrontPageBackground.png",
+    "LEVEL1": "../Resources/Background/FrontPageBackground.png",
+    "LEVEL2": "../Resources/Background/FrontPageBackground.png",
+    "LEVEL3": "../Resources/Background/FrontPageBackground.png"
+  }
+}
