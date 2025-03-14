@@ -50,13 +50,13 @@ public:
      */
     [[nodiscard]] std::shared_ptr<ImageObject> GetCurrentBackground() const;
 
-private:
     /**
      * @brief Loads background data from a JSON file. Implements the ILoadableFromJson interface.
      * @param filePath Path to the JSON file.
      */
     void LoadJson(const std::string& filePath) override;
 
+private:
     /**
      * @brief Initializes the BackgroundManager by loading and processing background data.
      * @param filePath Path to the JSON file.

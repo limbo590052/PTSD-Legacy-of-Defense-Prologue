@@ -24,11 +24,11 @@ std::shared_ptr<ImageObject> BackgroundManger::GetCurrentBackground() const {
     return nullptr;
 }
 
-//Private
 void BackgroundManger::LoadJson(const std::string& filePath){
     Initialize(filePath);
 }
 
+//Private
 void BackgroundManger::Initialize(const std::string& filePath) {
     nlohmann::json jsonData = LoadJsonFromFile(filePath);
     if (jsonData.empty()) {
