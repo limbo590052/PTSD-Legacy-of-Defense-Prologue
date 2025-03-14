@@ -5,6 +5,7 @@
 #include "Util/Input.hpp"
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
+#include "Util/Position.hpp"
 
 void MyApp::FrontPage() {
     LOG_TRACE("FrontPage");
@@ -35,6 +36,22 @@ void MyApp::FrontPage() {
 
     m_Root.AddChildren(gameObjectButtons);
     m_Root.Update();
+
+    if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
+        Util::Input::IfExit()) {
+        m_CurrentState = State::END;
+    }
+
+    if (Util::Input::IsKeyPressed(Util::Keycode::MOUSE_LB)) {
+        Util::PTSDPosition cursorPTSDPosition = Util::Input::GetCursorPosition();
+//        Util::SDLPosition cursorSDLPosition = cursorPTSDPosition.ToSDLPosition();
+        for (auto& button : m_FrontPageButtons) {
+            if (button->IsPositionInside(cursorPTSDPosition)) {
+                button->Click();
+                break;
+            }
+        }
+    }
 }
 
 void MyApp::Update() {

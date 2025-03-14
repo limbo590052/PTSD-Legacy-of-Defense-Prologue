@@ -36,7 +36,7 @@ bool Button::IsPositionInside(const Util::PTSDPosition &position) const {
     float right = buttonPosition.x + buttonSize.x;
 
     float top = buttonPosition.y;
-    float bottom = buttonPosition.y + buttonSize.y;
+    float bottom = buttonPosition.y - buttonSize.y;
 
     bool inLeftAndRight =  position.x >= left && position.x <= right;
     bool inTopAndDown = position.y<= top && position.y >= bottom;
