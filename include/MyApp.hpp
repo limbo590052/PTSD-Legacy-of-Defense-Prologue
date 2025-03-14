@@ -4,6 +4,7 @@
 #include "pch.hpp" // IWYU pragma: export
 #include "Util/Renderer.hpp"
 #include "BackgroundManger.hpp"
+#include "Button.hpp"
 
 class MyApp {
 public:
@@ -25,10 +26,13 @@ public:
     void End(); // NOLINT(readability-convert-member-functions-to-static)
 
 private:
+    //FrontPage
+    std::shared_ptr<Button> m_StartButton;
+    std::shared_ptr<Button> m_UpgradeButton;
+    std::vector<std::shared_ptr<Button>> m_FrontPageButtons;
 
 private:
     State m_CurrentState = State::START;
-
     Util::Renderer m_Root;
     std::shared_ptr<BackgroundManger> m_BM;
 };

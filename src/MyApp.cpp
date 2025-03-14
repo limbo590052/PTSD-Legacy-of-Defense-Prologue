@@ -1,6 +1,7 @@
 #include "MyApp.hpp"
 
-#include "Util/Image.hpp"
+#include <memory>
+
 #include "Util/Input.hpp"
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
@@ -13,6 +14,26 @@ void MyApp::FrontPage() {
     m_BM->ChangeBackground(BackgroundManger::BackgroundName::FRONT_PAGE);
     m_Root.AddChild(m_BM->GetCurrentBackground());
 
+    //TODO Write Buttons var onClick() function
+    m_StartButton = std::make_shared<Button>(
+            RESOURCE_DIR "/StartButton.png", glm::vec2(0, -100),
+            [this]() { LOG_INFO("Start button clicked!"); }, 10);
+    m_UpgradeButton = std::make_shared<Button>(
+            RESOURCE_DIR "/UpgradeButton.png", glm::vec2(0, -200),
+            [this]() { LOG_DEBUG("LevelUp button clicked!"); }, 10);
+
+    m_FrontPageButtons.clear();
+    m_FrontPageButtons.push_back(m_StartButton);
+    m_FrontPageButtons.push_back(m_UpgradeButton);
+
+    std::vector<std::shared_ptr<Util::GameObject>> gameObjectButtons;
+    gameObjectButtons.reserve(m_FrontPageButtons.size());
+
+    for (const auto& button : m_FrontPageButtons) {
+        gameObjectButtons.push_back(std::static_pointer_cast<Util::GameObject>(button));
+    }
+
+    m_Root.AddChildren(gameObjectButtons);
     m_Root.Update();
 }
 
