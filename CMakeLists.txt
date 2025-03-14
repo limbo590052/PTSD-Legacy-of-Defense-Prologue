@@ -40,6 +40,8 @@ add_executable(${PROJECT_NAME}
         src/ImageObject.cpp
         include/Interface/ILoadableFromJson.hpp
         include/JsonDataStructures/BackgroundPaths.hpp
+        include/Button.hpp
+        src/Button.cpp
 )
 
 if(MSVC)
