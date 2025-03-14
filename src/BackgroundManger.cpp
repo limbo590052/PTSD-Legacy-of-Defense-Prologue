@@ -47,19 +47,6 @@ void BackgroundManger::Initialize(const std::string& filePath) {
     }
 }
 
-nlohmann::json BackgroundManger::LoadJsonFromFile(const std::string& filePath) {
-    std::ifstream file(filePath);
-    if (!file.is_open()) {
-        LOG_ERROR("Unable to open file: {}", filePath);
-        return {}; // Returns an empty json object, indicating an error
-    }
-
-    nlohmann::json jsonData;
-    file >> jsonData;
-    file.close();
-    return jsonData;
-}
-
 void BackgroundManger::CreateBackgroundObjects(
         const JsonDataStructures::BackgroundPaths& backgroundPaths) {
     const auto& nameToBackground = m_NameToBackground;

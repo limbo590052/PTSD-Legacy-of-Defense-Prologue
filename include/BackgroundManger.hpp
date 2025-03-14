@@ -64,13 +64,6 @@ private:
     void Initialize(const std::string &filePath);
 
     /**
-     * @brief Loads JSON data from a file.
-     * @param filePath Path to the JSON file.
-     * @return The loaded JSON data.
-     */
-    static nlohmann::json LoadJsonFromFile(const std::string &filePath);
-
-    /**
      * Creates background ImageObjects from given paths and stores them in the BackgroundMap.
      *
      * @param backgroundPaths A struct containing a map of background names to file paths.
