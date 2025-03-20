@@ -5,6 +5,7 @@
 #include <fstream>
 #include "Button.hpp"
 #include <nlohmann/json.hpp>
+#include "Util/Position.hpp"
 
 Button::Button(const std::string &ImagePath, const glm::vec2 &position, const std::function<void()> &onClick,
                float zIndex):m_OnClick(onClick){
@@ -29,14 +30,16 @@ bool Button::IsPositionInside(const Util::PTSDPosition &position) const {
         return false;
     }
 
-    glm::vec2 buttonPosition = GetPosition();
+    auto buttonPosition = Util::PTSDPosition(GetPosition());
     glm::vec2 buttonSize = m_Drawable->GetSize();
 
-    float left = buttonPosition.x;
-    float right = buttonPosition.x + buttonSize.x;
+    float left = buttonPosition.x - buttonSize.x / 2.0f; // Adjust left for center origin
+    float right = buttonPosition.x + buttonSize.x / 2.0f; // Adjust right for center origin
 
     float top = buttonPosition.y;
     float bottom = buttonPosition.y - buttonSize.y;
+    float top = buttonPosition.y + buttonSize.y / 2.0f; // Adjust top for center origin
+    float bottom = buttonPosition.y - buttonSize.y / 2.0f; // Adjust bottom for center origin
 
     bool inLeftAndRight =  position.x >= left && position.x <= right;
     bool inTopAndDown = position.y<= top && position.y >= bottom;
