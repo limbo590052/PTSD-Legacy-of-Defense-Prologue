@@ -6,6 +6,7 @@
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
 #include "Util/Position.hpp"
+#include "Fixer.hpp"
 
 void MyApp::FrontPage() {
     LOG_TRACE("FrontPage");
@@ -43,10 +44,12 @@ void MyApp::FrontPage() {
     }
 
     if (Util::Input::IsKeyPressed(Util::Keycode::MOUSE_LB)) {
+
         Util::PTSDPosition cursorPTSDPosition = Util::Input::GetCursorPosition();
-//        Util::SDLPosition cursorSDLPosition = cursorPTSDPosition.ToSDLPosition();
+        Util::PTSDPosition correctCursorPosition = Fixer::CorrectCursorPosition(cursorPTSDPosition);
+
         for (auto& button : m_FrontPageButtons) {
-            if (button->IsPositionInside(cursorPTSDPosition)) {
+            if (button->IsPositionInside(correctCursorPosition)) {
                 button->Click();
                 break;
             }

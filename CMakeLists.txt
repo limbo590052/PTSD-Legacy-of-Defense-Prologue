@@ -42,6 +42,7 @@ add_executable(${PROJECT_NAME}
         include/JsonDataStructures/BackgroundPaths.hpp
         include/Button.hpp
         src/Button.cpp
+        include/Fixer.hpp
 )
 
 if(MSVC)
