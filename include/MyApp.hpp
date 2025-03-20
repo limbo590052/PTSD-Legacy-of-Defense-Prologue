@@ -33,7 +33,7 @@ private:
 
 private:
     State m_CurrentState = State::START;
-    Util::Renderer m_Root;
+    Util::Renderer m_renderer;
     std::shared_ptr<BackgroundManger> m_BM;
 };
 

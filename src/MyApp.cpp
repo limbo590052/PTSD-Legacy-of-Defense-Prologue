@@ -12,9 +12,9 @@ void MyApp::FrontPage() {
     LOG_TRACE("FrontPage");
     m_CurrentState = State::FRONT_PAGE;
 
-    m_Root.RemoveChild(m_BM->GetCurrentBackground());
+    m_renderer.RemoveChild(m_BM->GetCurrentBackground());
     m_BM->ChangeBackground(BackgroundManger::BackgroundName::FRONT_PAGE);
-    m_Root.AddChild(m_BM->GetCurrentBackground());
+    m_renderer.AddChild(m_BM->GetCurrentBackground());
 
     //TODO Write Buttons var onClick() function
     m_StartButton = std::make_shared<Button>(
@@ -35,8 +35,8 @@ void MyApp::FrontPage() {
         gameObjectButtons.push_back(std::static_pointer_cast<Util::GameObject>(button));
     }
 
-    m_Root.AddChildren(gameObjectButtons);
-    m_Root.Update();
+    m_renderer.AddChildren(gameObjectButtons);
+    m_renderer.Update();
 
     if (Util::Input::IsKeyUp(Util::Keycode::ESCAPE) ||
         Util::Input::IfExit()) {
@@ -59,7 +59,7 @@ void MyApp::FrontPage() {
 
 void MyApp::Update() {
     
-    m_Root.Update();
+    m_renderer.Update();
 
     /*
      * Do not touch the code below as they serve the purpose for

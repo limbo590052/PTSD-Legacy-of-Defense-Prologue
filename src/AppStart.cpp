@@ -11,5 +11,5 @@ void MyApp::Start() {
     m_BM = std::make_shared<BackgroundManger>(
             RESOURCE_DIR"/JSON/background_paths.json");
     m_CurrentState = State::FRONT_PAGE;
-    m_Root.Update();
+    m_renderer.Update();
 }

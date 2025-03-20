@@ -30,14 +30,13 @@ bool Button::IsPositionInside(const Util::PTSDPosition &position) const {
         return false;
     }
 
-    auto buttonPosition = Util::PTSDPosition(GetPosition());
+    glm::vec2 buttonVec2 = GetPosition();
+    auto buttonPosition = Util::PTSDPosition(buttonVec2.x,buttonVec2.y);
     glm::vec2 buttonSize = m_Drawable->GetSize();
 
     float left = buttonPosition.x - buttonSize.x / 2.0f; // Adjust left for center origin
     float right = buttonPosition.x + buttonSize.x / 2.0f; // Adjust right for center origin
 
-    float top = buttonPosition.y;
-    float bottom = buttonPosition.y - buttonSize.y;
     float top = buttonPosition.y + buttonSize.y / 2.0f; // Adjust top for center origin
     float bottom = buttonPosition.y - buttonSize.y / 2.0f; // Adjust bottom for center origin
 

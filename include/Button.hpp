@@ -15,6 +15,7 @@
 #include <functional>
 #include "Util/Position.hpp"
 #include "Interface/ILoadableFromJson.hpp"
+
 class Button : public Util::GameObject{
 public:
     Button(const std::string& ImagePath,
