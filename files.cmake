@@ -1,9 +1,9 @@
 set(SRC_FILES
-    App.cpp
+    MyApp.cpp
 )
 
 set(INCLUDE_FILES
-    App.hpp
+    MyApp.hpp
 )
 
 set(TEST_FILES
